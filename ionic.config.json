@@ -1,0 +1,7 @@
+{
+  "name": "pxblue-multiselect-list-ionic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

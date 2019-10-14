@@ -1,0 +1,40 @@
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title class="ion-text-center"> Multiselect list </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <mat-nav-list *ngIf="data.length > 0">
+      <mat-list-item *ngFor="let item of data">
+        <mat-checkbox mat-list-icon [checked]="isSelected(item)" (change)="onSelected(item)"></mat-checkbox>
+        <div mat-line [ngStyle]="{color: Colors.black[800]}">
+          {{item.name}}
+        </div>
+        <div mat-line [ngStyle]="{color: Colors.gray[500]}">
+          {{item.details}}
+        </div>
+      </mat-list-item>
+    </mat-nav-list>
+    <div style="height: 100%" *ngIf="data.length == 0">
+      <empty-state [title]="'No Items found'">
+
+      </empty-state>
+    </div>
+  </ion-content>
+  <ion-footer [ngStyle]="{color: Colors.black[800]}" [class.active]="selectedItems.length>0" class="mat-simple-snackbar" data-cy="snackbar" fxLayout="row">
+        <ion-note slot="start" >{{selectedItems.length}} selected items</ion-note>
+        <ion-buttons slot="end">
+          <ion-button (click)="deleteItems()" [ngStyle]="{color: Colors.black[800]}">
+              <mat-icon>delete</mat-icon>
+          </ion-button>
+          <ion-button (click)="cancelItems()" [ngStyle]="{color: Colors.black[800]}">
+              <mat-icon>cancel</mat-icon>
+          </ion-button>
+          <ion-button  [ngStyle]="{color: Colors.black[800]}">
+              <mat-icon>more_vert</mat-icon>
+          </ion-button>
+        </ion-buttons>
+  </ion-footer>
+</ion-app>
